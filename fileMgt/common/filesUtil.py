@@ -17,9 +17,9 @@ def move_files(source_dir, target_dir, file_ext, file_description):
             print("Done!")
         except OSError as e:
             print("Unable to move file '" + file_ )
-            print e.errno
-            print e.filename
-            print e.strerror
+            print(e.errno)
+            print(e.filename)
+            print(e.strerror)
 
     files = [file_ for file_ in os.listdir(source_dir) if file_.lower().endswith(file_ext.lower())]
 
@@ -37,9 +37,9 @@ def copy_files(source_dir, target_dir, file_ext, file_description):
             print("Done!")
         except OSError as e:
             print("Unable to copy file '" + file_ )
-            print e.errno
-            print e.filename
-            print e.strerror
+            print(e.errno)
+            print(e.filename)
+            print(e.strerror)
 
     files = [file_ for file_ in os.listdir(source_dir) if file_.lower().endswith(file_ext.lower())]
 
