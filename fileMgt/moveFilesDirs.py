@@ -1,6 +1,12 @@
+#!/usr/bin/env python
+
 """
-Move files and subdirectories from a specified 'source' directory to a 'destination' directory.
-Any existing files & subdirectories in the 'destination' directory but not 'source' will not be removed.
+Move files and subdirectories from a specified 'source' directory to a 'target' directory.
+Any existing files & subdirectories in the 'target' directory but not in 'source' will remain intact.
+
+example:
+
+    ./moveFilesDirs.py -s ../source/ -t ../target/
 
 This is based on my original answer to a Stack Overflow question:
 
@@ -10,9 +16,21 @@ This is based on my original answer to a Stack Overflow question:
 
 import os
 import shutil
+import argparse
 
-root_src_dir = "<SOURCE DIRECTORY>"
-root_dst_dir = "<DESTINATION DIRECTORY>"
+# command line args
+parser = argparse.ArgumentParser(description=__doc__,
+                                 formatter_class=argparse.RawDescriptionHelpFormatter)
+parser.add_argument("-s", "--source-filepath",
+                    help="source directory to move", default=os.getcwd())
+parser.add_argument("-t", "--target-filepath",
+                    help="target directory to move to",
+                    default=os.getcwd())
+args = parser.parse_args()
+
+# move files & directories
+root_src_dir = args.source_filepath
+root_dst_dir = args.target_filepath
 
 for src_dir, dirs, files in os.walk(root_src_dir):
     dst_dir = src_dir.replace(root_src_dir, root_dst_dir)
