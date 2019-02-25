@@ -11,8 +11,8 @@ This is based on my original answer to a Stack Overflow question:
 import os
 import shutil
 
-root_src_dir = 'Src Directory\\'
-root_dst_dir = 'Dst Directory\\'
+root_src_dir = "<SOURCE DIRECTORY>"
+root_dst_dir = "<DESTINATION DIRECTORY>"
 
 for src_dir, dirs, files in os.walk(root_src_dir):
     dst_dir = src_dir.replace(root_src_dir, root_dst_dir)
