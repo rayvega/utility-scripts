@@ -13,3 +13,13 @@ def update_text(original_text, text_changes):
     new_text = "\n".join(new_lines)
 
     return new_text
+
+
+def update_file(filename, text_changes):
+    with open(filename, 'r') as _file:
+        contents = _file.read()
+
+    new_file_content = update_text(contents, text_changes)
+
+    with open(filename, 'w') as f:
+        f.write(new_file_content)
